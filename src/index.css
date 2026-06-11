@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.tile-wrapper {
+  perspective: 250px;
+}
+
+.tile-flip {
+  animation: tileFlip 0.5s ease-in-out forwards;
+}
+
+@keyframes tileFlip {
+  0%   { transform: rotateX(0deg); }
+  49%  { transform: rotateX(90deg); }
+  50%  { transform: rotateX(-90deg); }
+  100% { transform: rotateX(0deg); }
+}
+
+.row-shake {
+  animation: rowShake 0.4s ease-in-out;
+}
+
+@keyframes rowShake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-5px); }
+  80%       { transform: translateX(5px); }
+}
+
+.letter-lock {
+  animation: letterLock 0.3s ease-out;
+}
+
+@keyframes letterLock {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.zone-active {
+  box-shadow: inset 0 0 0 3px #e07b39, 0 0 20px rgba(224,123,57,0.3);
+}
+
+.zone-locked {
+  box-shadow: inset 0 0 0 3px #538d4e, 0 0 20px rgba(83,141,78,0.3);
+}
+
+.video-canvas-wrapper {
+  position: relative;
+}
+
+.video-canvas-wrapper video,
+.video-canvas-wrapper canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 2px; }
